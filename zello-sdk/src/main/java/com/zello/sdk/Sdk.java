@@ -972,8 +972,7 @@ class Sdk implements SafeHandlerEvents, ServiceConnection {
 			fireAppStateChanged();
 			if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.Q) {
 				try {
-					PendingIntent.getService(context, 0, _serviceIntent,
-							PendingIntent.FLAG_UPDATE_CURRENT | ((Build.VERSION.SDK_INT > Build.VERSION_CODES.R) ? PendingIntent.FLAG_IMMUTABLE : 0)).send();
+					PendingIntent.getService(context, 0, _serviceIntent, PendingIntent.FLAG_UPDATE_CURRENT | PendingIntent.FLAG_IMMUTABLE).send();
 				} catch (Throwable t) {
 					Log.INSTANCE.e("Failed to start service using a pending intent", t);
 				}
